@@ -1,8 +1,10 @@
+{% load compress %}
+
 <!DOCTYPE HTML>
 <html>
     <head>
         <title>grooveshark-html5</title>
-        <link rel="stylesheet" href="../static/css/style.css"/>
+        <link rel="stylesheet" href="{{ STATIC_URL }}css/style.css"/>
     </head>
 
     <body>
@@ -10,12 +12,15 @@
             <h1>grooveshark-html5</h1>
         </div>
 
-        <script src="../static/js/zepto.min.js"></script>
-        <script src="../static/js/underscore-min.js"></script>
-        <script src="../static/js/backbone-min.js"></script>
-        <script src="../static/js/uuid.js"></script>
-        <script src="../static/js/2.5.3-crypto-md5.js"></script>
-        <script src="../static/js/2.5.3-crypto-sha1.js"></script>
-        <script src="../static/js/app.js"></script>
+        <script type="text/javascript" src="{{ STATIC_URL }}js/zepto.min.js"></script>
+        <script type="text/javascript" src="{{ STATIC_URL }}js/underscore-min.js"></script>
+        <script type="text/javascript" src="{{ STATIC_URL }}js/backbone-min.js"></script>
+        <script type="text/javascript" src="{{ STATIC_URL }}js/uuid.js"></script>
+        <script type="text/javascript" src="{{ STATIC_URL }}js/2.5.3-crypto-md5.js"></script>
+        <script type="text/javascript" src="{{ STATIC_URL }}js/2.5.3-crypto-sha1.js"></script>
+
+        {% compress js %}
+            <script type="text/coffeescript" src="{{ STATIC_URL }}main.coffee"></script>
+        {% endcompress %}
     </body>
 </html>
