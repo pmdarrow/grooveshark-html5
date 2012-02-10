@@ -1,4 +1,4 @@
-# Django settings for session_grabber project.
+# Django settings for grooveshark-html5 project.
 
 DEBUG = True
 TEMPLATE_DEBUG = DEBUG
@@ -100,7 +100,7 @@ MIDDLEWARE_CLASSES = (
     'django.contrib.messages.middleware.MessageMiddleware',
 )
 
-ROOT_URLCONF = 'session_grabber.urls'
+ROOT_URLCONF = 'grooveshark-html5.urls'
 
 TEMPLATE_DIRS = (
     # Put strings here, like "/home/html/django_templates" or "C:/www/django/templates".
