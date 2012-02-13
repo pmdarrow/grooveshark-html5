@@ -6,12 +6,12 @@ on a non-jailbroken iOS device.
 
 Components
 ----------
-    - Front-end
-        - Coffeescript
-        - Backbone.js
-        - Zepto.js
-    - Proxy for cross-domain AJAX requests to Grooveshark
-        - Django
+  - Front-end
+    - CoffeeScript
+    - Backbone.js
+    - Zepto.js
+  - Proxy for cross-domain AJAX requests to Grooveshark
+    - Django
 
 Development
 -----------
