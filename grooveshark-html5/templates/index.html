@@ -21,6 +21,9 @@
         <script type="text/javascript" src="{{ STATIC_URL }}js/django-csrf.js"></script>
 
         {% compress js %}
+            <script type="text/coffeescript" src="{{ STATIC_URL }}collections.coffee"></script>
+            <script type="text/coffeescript" src="{{ STATIC_URL }}views.coffee"></script>
+            <script type="text/coffeescript" src="{{ STATIC_URL }}groovesharkapi.coffee"></script>
             <script type="text/coffeescript" src="{{ STATIC_URL }}main.coffee"></script>
         {% endcompress %}
     </body>
