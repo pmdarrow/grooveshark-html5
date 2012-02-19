@@ -51,6 +51,7 @@ class SongSearchResult extends Backbone.View
     @$el.text(@model.get('ArtistName') + ' - ' + @model.get('SongName'))
     return @
 
+
 # Represents an individual album search result
 class AlbumSearchResult extends SongSearchResult
 
