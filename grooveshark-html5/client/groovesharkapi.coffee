@@ -24,7 +24,7 @@
     @header.uuid = uuid.v4().toUpperCase()
 
   getRequestToken: (method) ->
-  # Generate 6 random hex characters
+    # Generate 6 random hex characters
     letters = '0123456789ABCDEF'.split('')
     rand = (letters[Math.round(Math.random() * 15)] for i in [1..6]).join('')
 

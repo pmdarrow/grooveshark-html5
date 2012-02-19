@@ -3,7 +3,7 @@
   type: 'Songs'
 
   fetch: (options) ->
-  # Shove query & search type into 'parameters' object
+    # Shove query & search type into 'parameters' object
     if options?.query
       options.parameters =
         query: options.query
