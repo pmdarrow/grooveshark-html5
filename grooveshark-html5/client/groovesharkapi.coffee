@@ -1,4 +1,4 @@
-@GroovesharkApi = class GroovesharkApi
+class @GroovesharkApi
   settings:
     token: ''
     secret: 'boomGoesTheDolphin'
@@ -29,47 +29,45 @@
     rand = (letters[Math.round(Math.random() * 15)] for i in [1..6]).join('')
 
     # Create a SHA1 hash of the method, token and secret
-    sha = Crypto.SHA1([method, @settings.token, @settings.secret, rand].join(':'))
+    sha = Crypto.SHA1 [method, @settings.token, @settings.secret, rand].join(':')
     return rand + sha
 
   getSessionIdHash: (success, error) ->
-    $.ajax(
+    $.ajax
       url: @settings.endPoints.getSessionId,
       success: (response) =>
         @header.session = response
-        success(Crypto.MD5(response))
+        success Crypto.MD5 response
       error: error
-    )
 
   makeRequest: (method, parameters, success, error, requireToken=true) ->
     if requireToken
-      @header.token = @getRequestToken(method)
+      @header.token = @getRequestToken method
 
     payload =
       header: @header
       method: method
       parameters: parameters
 
-    $.ajax(
+    $.ajax
       type: 'POST'
       url: @settings.endPoints.apiProxy + method + '/'
-      data: JSON.stringify(payload)
+      data: JSON.stringify payload
       success: success
       error: error
       dataType: 'json'
       contentType: 'text/plain'
-    )
 
   authenticate: (success, error) ->
     @getSessionIdHash((sessionIdHash) =>
       parameters = secretKey: sessionIdHash
-      @makeRequest('getCommunicationToken', parameters, (response) =>
+      @makeRequest 'getCommunicationToken', parameters, (response) =>
         @settings.token = response.result
         success()
-      error, false)
+      , error, false
     )
 
   # Used as a drop-in replacement for Backbone.sync function
   sync: (method, collection, options) =>
-    @makeRequest(collection.method, options.parameters,
-      options.success, options.error)
+    @makeRequest collection.method, options.parameters,
+      options.success, options.error

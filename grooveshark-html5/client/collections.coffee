@@ -1,4 +1,4 @@
-@Songs = class Songs extends Backbone.Collection
+class @Songs extends Backbone.Collection
   method: 'getResultsFromSearch'
   type: 'Songs'
 
@@ -9,11 +9,11 @@
         query: options.query
         type: @type
       delete options.query
-    super(options)
+    super options
 
   parse: (response) ->
     response.result.result
 
 
-@Albums = class Albums extends Songs
+class @Albums extends Songs
   type: 'Albums'
