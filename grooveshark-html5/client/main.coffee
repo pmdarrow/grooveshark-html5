@@ -7,15 +7,6 @@ $ ->
 
   # Authenticate and make some test requests
   api.authenticate(->
-    songs = new Songs()
-    songs.fetch(
-      query: 'Gotye'
-      success: -> console.log JSON.stringify(songs.pluck 'SongName')
-    )
-
-    albums = new Albums()
-    albums.fetch(
-      query: 'Keane'
-      success: -> console.log JSON.stringify(albums.pluck 'Name')
-    )
+    searchView = new SearchView()
+    searchView.render()
   )

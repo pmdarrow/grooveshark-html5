@@ -10,7 +10,13 @@
     <body>
         <div id="content">
             <h1>grooveshark-html5</h1>
+            <div id="search"></div>
         </div>
+
+        <script type="text/template" id="search-template">
+            <input id="search-query" placeholder="Search query" type="text" />
+            <ul id="search-results"></ul>
+        </script>
 
         <script type="text/javascript" src="{{ STATIC_URL }}js/zepto.min.js"></script>
         <script type="text/javascript" src="{{ STATIC_URL }}js/underscore-min.js"></script>
