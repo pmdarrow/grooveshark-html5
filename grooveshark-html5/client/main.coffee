@@ -5,8 +5,8 @@ $ ->
   # Tell Backbone to sync using the Grooveshark API
   Backbone.sync = api.sync
 
-  # Authenticate and make some test requests
+  # Authenticate and render some views
   api.authenticate(->
-    searchView = new SearchView
-    searchView.render()
+      searchRouter = new SearchRouter
+      Backbone.history.start pushState: true
   )

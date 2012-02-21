@@ -5,7 +5,6 @@ class @SearchView extends Backbone.View
     'keypress #search-input': 'search'
 
   initialize: ->
-    @collection = new Songs
     # Re-render the collection when new search results have been fetched.
     @collection.bind 'reset', @render
 
