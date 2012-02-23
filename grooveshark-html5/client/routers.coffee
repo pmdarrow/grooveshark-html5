@@ -1,5 +1,5 @@
 class @SearchRouter extends Backbone.Router
-  routers:
+  routes:
     'search/songs':  'searchSongs'
     'search/albums': 'searchAlbums'
 
