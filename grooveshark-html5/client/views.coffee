@@ -6,7 +6,7 @@ class @SearchView extends Backbone.View
 
   initialize: ->
     # Re-render the collection when new search results have been fetched.
-    @collection.bind 'reset', @render
+    @collection.on 'reset', @render, @
 
   render: ->
     # Render search results
@@ -18,7 +18,7 @@ class @SearchView extends Backbone.View
   search: (event) ->
     # Execute search when the enter key is pressed
     if event.keyCode is 13
-      collection.fetch
+      @collection.fetch
         query: $(event.target).val()
 
 
