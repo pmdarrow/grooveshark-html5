@@ -1,10 +1,11 @@
-# Represents the main song & album search
-class @SearchView extends Backbone.View
+# Represents the main song search
+class @SongSearchView extends Backbone.View
   el: $('#search')
   events:
     'keypress #search-input': 'search'
 
-  initialize: ->
+  initialize: (options) ->
+    @resultClass = SongSearchResult
     # Re-render the collection when new search results have been fetched.
     @collection.on 'reset', @render, @
 
@@ -12,7 +13,7 @@ class @SearchView extends Backbone.View
     # Render search results
     searchResults = @$ '#search-results'
     @collection.each (model) =>
-      result = new SongSearchResult model: model
+      result = new @resultClass model: model
       @$el.append result.render().el
 
   search: (event) ->
@@ -22,8 +23,13 @@ class @SearchView extends Backbone.View
         query: $(event.target).val()
 
 
+# Represents the main album search
+class @AlbumSearchView extends SongSearchView
+  resultClass: AlbumSearchResult
+
+
 # Represents an individual song search result
-class SongSearchResult extends Backbone.View
+class @SongSearchResult extends Backbone.View
   tagName: 'li'
   className: 'search-result'
 
@@ -33,7 +39,7 @@ class SongSearchResult extends Backbone.View
 
 
 # Represents an individual album search result
-class AlbumSearchResult extends SongSearchResult
+class @AlbumSearchResult extends SongSearchResult
 
   render: ->
     @$el.text "#{@model.get 'ArtistName'} - #{@model.get 'Name'}"
