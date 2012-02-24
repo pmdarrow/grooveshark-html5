@@ -7,6 +7,7 @@ $ ->
 
   # Authenticate and render some views
   api.authenticate(->
-      searchRouter = new SearchRouter
-      Backbone.history.start pushState: true
+    searchRouter = new SearchRouter
+    Backbone.history.start()
+    searchRouter.navigate 'search/songs', trigger: true
   )
