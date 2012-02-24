@@ -38,7 +38,6 @@ class @SongSearchResult extends Backbone.View
 
   render: ->
     @$el.text "#{@model.get 'ArtistName'} - #{@model.get 'SongName'}"
-    @
 
 
 # Represents an individual album search result
@@ -46,4 +45,3 @@ class @AlbumSearchResult extends SongSearchResult
 
   render: ->
     @$el.text "#{@model.get 'ArtistName'} - #{@model.get 'Name'}"
-    @
