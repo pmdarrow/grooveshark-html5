@@ -59,13 +59,12 @@ class @GroovesharkApi
       contentType: 'text/plain'
 
   authenticate: (success, error) ->
-    @getSessionIdHash((sessionIdHash) =>
+    @getSessionIdHash (sessionIdHash) =>
       parameters = secretKey: sessionIdHash
       @makeRequest 'getCommunicationToken', parameters, (response) =>
         @settings.token = response.result
         success()
       , error, false
-    )
 
   # Used as a drop-in replacement for Backbone.sync function
   sync: (method, collection, options) =>

@@ -6,7 +6,6 @@ $ ->
   Backbone.sync = api.sync
 
   # Authenticate and render some views
-  api.authenticate(->
+  api.authenticate ->
     searchRouter = new SearchRouter
     Backbone.history.start()
-  )
