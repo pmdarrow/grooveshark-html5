@@ -9,5 +9,4 @@ $ ->
   api.authenticate(->
     searchRouter = new SearchRouter
     Backbone.history.start()
-    searchRouter.navigate 'search/songs', trigger: true
   )
