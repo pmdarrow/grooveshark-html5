@@ -1,4 +1,6 @@
-# Represents the main song search
+'''
+Represents the main song search
+'''
 class @SongSearchView extends Backbone.View
   el: $('#search')
   events:
@@ -23,7 +25,9 @@ class @SongSearchView extends Backbone.View
         query: $(event.target).val()
 
 
-# Represents the main album search
+'''
+Represents the main album search
+'''
 class @AlbumSearchView extends SongSearchView
 
   initialize: (options) ->
@@ -31,7 +35,9 @@ class @AlbumSearchView extends SongSearchView
     @resultClass = AlbumSearchResult
 
 
-# Represents an individual song search result
+'''
+Represents an individual song search result
+'''
 class @SongSearchResult extends Backbone.View
   tagName: 'li'
   className: 'search-result'
@@ -40,7 +46,9 @@ class @SongSearchResult extends Backbone.View
     @$el.text "#{@model.get 'ArtistName'} - #{@model.get 'SongName'}"
 
 
-# Represents an individual album search result
+'''
+Represents an individual album search result
+'''
 class @AlbumSearchResult extends SongSearchResult
 
   render: ->
