@@ -5,9 +5,11 @@ class @SearchRouter extends Backbone.Router
     'search/albums': 'searchAlbums'
 
   searchSongs: () ->
-    searchView = new SongSearchView collection: new Songs
-    searchView.render()
+    @searchView?.undelegateEvents()
+    @searchView = new SongSearchView collection: new Songs
+    @searchView.render()
 
   searchAlbums: () ->
-    searchView = new AlbumSearchView collection: new Albums
-    searchView.render()
+    @searchView?.undelegateEvents()
+    @searchView = new AlbumSearchView collection: new Albums
+    @searchView.render()

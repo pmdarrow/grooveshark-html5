@@ -14,9 +14,10 @@ class @SongSearchView extends Backbone.View
   render: ->
     # Render search results
     searchResults = @$ '#search-results'
+    searchResults.empty()
     @collection.each (model) =>
       result = new @resultClass model: model
-      @$el.append result.render().el
+      searchResults.append result.render().el
     @
 
   search: (event) ->
