@@ -17,6 +17,7 @@ class @SongSearchView extends Backbone.View
     @collection.each (model) =>
       result = new @resultClass model: model
       @$el.append result.render().el
+    @
 
   search: (event) ->
     # Execute search when the enter key is pressed
@@ -44,6 +45,7 @@ class @SongSearchResult extends Backbone.View
 
   render: ->
     @$el.text "#{@model.get 'ArtistName'} - #{@model.get 'SongName'}"
+    @
 
 
 '''
@@ -53,3 +55,4 @@ class @AlbumSearchResult extends SongSearchResult
 
   render: ->
     @$el.text "#{@model.get 'ArtistName'} - #{@model.get 'Name'}"
+    @
