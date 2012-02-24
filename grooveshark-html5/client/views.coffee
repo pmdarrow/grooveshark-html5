@@ -5,9 +5,9 @@ class @SongSearchView extends Backbone.View
     'keypress #search-input': 'search'
 
   initialize: (options) ->
-    @resultClass = SongSearchResult
     # Re-render the collection when new search results have been fetched.
     @collection.on 'reset', @render, @
+    @resultClass = SongSearchResult
 
   render: ->
     # Render search results
@@ -25,7 +25,10 @@ class @SongSearchView extends Backbone.View
 
 # Represents the main album search
 class @AlbumSearchView extends SongSearchView
-  resultClass: AlbumSearchResult
+
+  initialize: (options) ->
+    super options
+    @resultClass = AlbumSearchResult
 
 
 # Represents an individual song search result
