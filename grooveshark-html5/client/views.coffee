@@ -58,7 +58,8 @@ class @SongSearchResult extends Backbone.View
     @
 
   playSong: ->
-    @api.getStreamKey @model.get("SongID")
+    @api.getStreamUrl @model.get('SongID'), (url, duration) ->
+      window.location.href = url
 
 
 '''
