@@ -9,6 +9,7 @@ class @SongSearchView extends Backbone.View
   initialize: (options) ->
     # Re-render the collection when new search results have been fetched.
     @collection.on 'reset', @render, @
+    @api = options.api
     @resultClass = SongSearchResult
 
   render: ->
@@ -16,7 +17,9 @@ class @SongSearchView extends Backbone.View
     searchResults = @$ '#search-results'
     searchResults.empty()
     @collection.each (model) =>
-      result = new @resultClass model: model
+      result = new @resultClass
+        api: @api
+        model: model
       searchResults.append result.render().el
     @
 
@@ -44,9 +47,18 @@ class @SongSearchResult extends Backbone.View
   tagName: 'li'
   className: 'search-result'
 
+  events:
+    'click': 'playSong'
+
+  initialize: (options) ->
+    @api = options.api
+
   render: ->
     @$el.text "#{@model.get 'ArtistName'} - #{@model.get 'SongName'}"
     @
+
+  playSong: ->
+    @api.getStreamKey @model.get("SongID")
 
 
 '''

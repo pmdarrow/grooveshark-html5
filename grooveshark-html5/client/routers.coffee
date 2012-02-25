@@ -4,12 +4,19 @@ class @SearchRouter extends Backbone.Router
     'search/songs':  'searchSongs'
     'search/albums': 'searchAlbums'
 
+  initialize: (options) ->
+    @api = options.api
+
   searchSongs: () ->
     @searchView?.undelegateEvents()
-    @searchView = new SongSearchView collection: new Songs
+    @searchView = new SongSearchView
+      api: @api
+      collection: new Songs
     @searchView.render()
 
   searchAlbums: () ->
     @searchView?.undelegateEvents()
-    @searchView = new AlbumSearchView collection: new Albums
+    @searchView = new AlbumSearchView
+      api: @api
+      collection: new Albums
     @searchView.render()
