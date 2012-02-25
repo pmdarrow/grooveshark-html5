@@ -66,6 +66,14 @@ class @GroovesharkApi
         success()
       , error, false
 
+  getStreamKey: (songId, success, error) ->
+    @makeRequest 'getStreamKeyFromSongIDEx',
+      mobile: false
+      prefetch: false
+      songID: songId
+      country: @header.country
+    , (response) -> console.log response, error
+
   # Used as a drop-in replacement for Backbone.sync function
   sync: (method, collection, options) =>
     @makeRequest collection.method, options.parameters,
